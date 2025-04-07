@@ -6,6 +6,8 @@ const router = express.Router();
 const TELEGRAM_API = `https://api.telegram.org/bot${process.env.BOT_TOKEN}`;
 
 router.post('/webhook', async (req, res) => {
+  console.log('Reached /telegram/webhook POST handler'); // Add this
+  console.log('Request Body:', JSON.stringify(req.body, null, 2)); // Log body
   const message = req.body.message;
 
   if (message?.text === '/start') {
