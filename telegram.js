@@ -1,14 +1,13 @@
 // telegram.js
-require('dotenv').config();
 const express = require('express');
 const fetch = require('node-fetch');
 const router = express.Router();
 
 const TELEGRAM_API = `https://api.telegram.org/bot${process.env.BOT_TOKEN}`;
 
-// This should handle POST requests at the /telegram/webhook endpoint
 router.post('/webhook', async (req, res) => {
   const message = req.body.message;
+
   if (message?.text === '/start') {
     const chat_id = message.chat.id;
 
